@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        
+	<!-- 开启SpringMVC注解模式
+		1.DefaultAnnotationHandlerMapping  		URL到Handler映射
+		2.AnnotationMethodHandlerAdapter		URL到注解方法的适配器	
+		3.默认提供一系列功能：数据绑定（参数绑定的注解），数字和日期的注解（@NumberFormat）
+		4.xml,json读写功能
+	 -->
+	<mvc:annotation-driven/>
+	
+	<!-- 静态资源配置
+		1.	加入对静态资源的请求png。。。
+		2.允许使用 “/” 做映射
+	 -->
+	<mvc:default-servlet-handler/>
+	
+	<!-- 配置jsp，显示ViewResolver -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 引入jstl的类 -->
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/jsps/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	
+	<!-- 扫描web相关的bean Controller -->
+	<context:component-scan base-package="org.seckill.controller"/>
+</beans>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 为DAO接口方法提供SQL数据 -->
+<mapper namespace="org.seckill.dao.SuccessKilledDao">
+
+	<resultMap type="org.seckill.entity.SuccessKilled" id="resultSuccessKilled">
+		<id column="seckillId" property="seckillId"/>
+		<result column="userPhone" property="userPhone"/>
+		<result column="state" property="state"/>
+		<result column="createTime" property="createTime"/>
+
+		<!-- 一对多的关系 -->
+		<!-- property: 指的是集合属性的值, ofType：指的是集合中元素的类型 -->
+		<collection property="seckill" ofType="org.seckill.entity.Seckill">
+			<id column="seckillId" property="seckillId"/>
+			<result column="name" property="name"/>
+			<result column="number" property="number"/>
+			<result column="startTime" property="startTime"/>
+			<result column="endTime" property="endTime"/>
+			<result column="createTime" property="createTime"/>
+		</collection>
+	</resultMap>
+
+
+	<insert id="insertSuccessKilled">
+		<!-- 忽略主键重复的错误，不报错，但是不会insert成功 -->
+		insert ignore into success_killed(seckillId,userPhone)
+		values(#{seckillId},#{userPhone})
+	</insert>
+
+	<select
+			id="queryByIdWithSeckill"
+			resultType="SuccessKilled">
+		<!-- 返回的结果集中要带着seckill的实例，使用列别名的方式与entity中定义的实体匹配 -->
+		select
+		sk.seckillId,
+		sk.userPhone,
+		sk.createTime,
+		sk.state,
+		s.seckillId as "seckill.seckillId",
+		s.name as "seckill.name",
+		s.number as "seckill.number",
+		s.startTime as "seckill.startTime",
+		s.endTime as "seckill.endTime",
+		s.createTime as "seckill.createTime"
+		from success_killed sk inner join seckill s
+		on sk.seckillId = s.seckillId
+		where sk.seckillId = #{seckillId} and sk.userPhone = #{userPhone}
+	</select>
+</mapper>

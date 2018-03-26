@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<!-- 全局属性 -->
+	<settings>
+		<!-- 使用jdbc获取数据库自增主键值 -->
+		<setting name="useGeneratedKeys" value="ture"/>
+		<!-- 使用列别名替换列名 -->
+		<setting name="useColumnLabel" value="ture"/>
+		<!-- 开启驼峰命名规范，create_time turnTo createTime --> 
+		<setting name="mapUnderscoreToCamelCase" value="ture"/>
+	</settings>
+</configuration>
+
