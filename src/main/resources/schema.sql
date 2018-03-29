@@ -24,4 +24,5 @@ userPhone bigint NOT NULL COMMENT '用户手机号',
 state tinyint NOT NULL DEFAULT 0 COMMENT '当前状态：0表示nothing，1表示已被秒杀',
 createTime timestamp NOT NULL COMMENT '当前记录创建的时间',
 PRIMARY KEY(seckillId,userPhone),/*联合主键，id和用户手机号做唯一标示*/
-key idx_create_time(createTime))
+key idx_create_time(createTime)
+)
