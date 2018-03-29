@@ -9,8 +9,7 @@ createTime timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
 PRIMARY KEY(seckillId),
 key idx_start_time(startTime),
 key idx_end_time(endTime),
-key idx_create_time(createTime),
-)
+key idx_create_time(createTime))
 
 /*插入数据*/
 insert into
@@ -25,5 +24,4 @@ userPhone bigint NOT NULL COMMENT '用户手机号',
 state tinyint NOT NULL DEFAULT 0 COMMENT '当前状态：0表示nothing，1表示已被秒杀',
 createTime timestamp NOT NULL COMMENT '当前记录创建的时间',
 PRIMARY KEY(seckillId,userPhone),/*联合主键，id和用户手机号做唯一标示*/
-key idx_create_time(createTime)
-)
+key idx_create_time(createTime))
