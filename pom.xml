@@ -21,7 +21,7 @@
             <!-- junit version4.0以上使用注解方式运行junit -->
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.13.1</version>
             <scope>test</scope><!-- 作用范围 -->
         </dependency>
 
