@@ -13,7 +13,7 @@
     <!--<url>http://nexus.tuniu.org/nexus/content/groups/public</url>-->
 
     <properties>
-        <org.springframework.version>4.1.3.RELEASE</org.springframework.version>
+        <org.springframework.version>6.0.0</org.springframework.version>
     </properties>
 
     <dependencies>
